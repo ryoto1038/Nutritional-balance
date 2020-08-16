@@ -1,0 +1,244 @@
+import java.util.Scanner;
+import java.util.stream.DoubleStream;
+
+public class Main {
+    public static void main(String[] args) {
+        double[] a = new double[100];
+        double[] b = new double[100];
+        double[] c = new double[100];
+        double[] d = new double[100];
+        double[] e = new double[100];
+        double[] f = new double[100];
+
+
+        System.out.println("栄養バランス診断へ、ようこそ");
+        //グラフ入力
+        //赤色1群
+        Scanner sc1 = new Scanner(System.in);
+        System.out.println("食べた赤色1群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < a.length; i++) {
+            System.out.println("赤色1群 " + (i + 1) + "個目");
+            a[i] = sc1.nextDouble();
+            if (a[i] == 0) {
+                break;
+            }
+        }
+        double sum1 = DoubleStream.of(a).sum();
+        System.out.println("赤色1群の合計は" + sum1 + "gです。");
+        System.out.println("--------------------");
+
+
+        //赤色2群
+        Scanner sc2 = new Scanner(System.in);
+        System.out.println("食べた赤色2群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < b.length; i++) {
+            System.out.println("赤色2群 " + (i + 1) + "個目");
+            b[i] = sc2.nextDouble();
+            if (b[i] == 0) {
+                break;
+            }
+        }
+        double sum2 = DoubleStream.of(b).sum();
+        System.out.println("赤色2群の合計は" + sum2 + "gです。");
+        System.out.println("--------------------");
+
+
+        //緑色3群
+        Scanner sc3 = new Scanner(System.in);
+        System.out.println("食べた緑色3群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < c.length; i++) {
+            System.out.println("緑色3群 " + (i + 1) + "個目");
+            c[i] = sc3.nextDouble();
+            if (c[i] == 0) {
+                break;
+            }
+        }
+        double sum3 = DoubleStream.of(c).sum();
+        System.out.println("緑色3群の合計は" + sum3 + "gです。");
+        System.out.println("--------------------");
+
+
+        //緑色4群
+        Scanner sc4 = new Scanner(System.in);
+        System.out.println("食べた緑色4群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < d.length; i++) {
+            System.out.println("緑色4群 " + (i + 1) + "個目");
+            d[i] = sc4.nextDouble();
+            if (d[i] == 0) {
+                break;
+            }
+        }
+        double sum4 = DoubleStream.of(d).sum();
+        System.out.println("緑色4群の合計は" + sum4 + "gです。");
+        System.out.println("--------------------");
+
+
+        //黄色5群
+        Scanner sc5 = new Scanner(System.in);
+        System.out.println("食べた黄色5群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < e.length; i++) {
+            System.out.println("黄色5群 " + (i + 1) + "個目");
+            e[i] = sc5.nextDouble();
+            if (e[i] == 0) {
+                break;
+            }
+        }
+        double sum5 = DoubleStream.of(e).sum();
+        System.out.println("黄色5群の合計は" + sum5 + "gです。");
+        System.out.println("--------------------");
+
+
+        //黄色6群
+        Scanner sc6 = new Scanner(System.in);
+        System.out.println("食べた黄色6群の食材のグラム数を一つずつ入力してください。");
+        for (int i = 0; i < f.length; i++) {
+            System.out.println("黄色6群 " + (i + 1) + "個目");
+            f[i] = sc6.nextDouble();
+            if (f[i] == 0) {
+                break;
+            }
+        }
+        double sum6 = DoubleStream.of(f).sum();
+        System.out.println("黄色6群の合計は" + sum6 + "gです。");
+        System.out.println("--------------------");
+
+
+        //不足計算
+        //赤色1群
+        double Shortage1 = 330 - sum1;
+        if (sum1 < 330) {
+            System.out.print("赤色1群が" + Shortage1 + "g");
+            if (sum2 < 400 || sum3 < 100 || sum4 < 400 || sum5 < 500 || sum6 < 25) {
+                System.out.print(",");
+            }
+        }
+
+
+        //赤色2群
+        double Shortage2 = 400 - sum2;
+        if (sum2 < 400) {
+            System.out.print("赤色2群が" + Shortage2 + "g");
+            if (sum3 < 100 || sum4 < 400 || sum5 < 500 || sum6 < 25) {
+                System.out.print(",");
+            }
+        }
+
+
+        //緑色3群
+        double Shortage3 = 100 - sum3;
+        if (sum3 < 100) {
+            System.out.print("緑色3群が" + Shortage3 + "g");
+            if (sum4 < 400 || sum5 < 500 || sum6 < 25) {
+                System.out.print(",");
+            }
+        }
+
+
+        //緑色4群
+        double Shortage4 = 400 - sum4;
+        if (sum4 < 400) {
+            System.out.print("緑色4群が" + Shortage4 + "g");
+            if (sum5 < 500 || sum6 < 25) {
+                System.out.print(",");
+            }
+        }
+
+
+        //黄色5群
+        double Shortage5 = 500 - sum5;
+        if (sum5 < 500) {
+            System.out.print("黄色5群が" + Shortage5 + "g");
+            if (sum6 < 25) {
+                System.out.print(",");
+            }
+        }
+
+
+        //黄色6群
+        double Shortage6 = 25 - sum6;
+        if (sum6 < 25) {
+            System.out.print("黄色6群が" + Shortage6 + "g");
+        }
+
+
+        //割合計算、レシピ
+        double Proportion1 = sum1 / 330;
+        double Proportion2 = sum2 / 400;
+        double Proportion3 = sum3 / 100;
+        double Proportion4 = sum4 / 400;
+        double Proportion5 = sum5 / 500;
+        double Proportion6 = sum6 / 25;
+        double[] Pro123456 = {Proportion1, Proportion2, Proportion3, Proportion4, Proportion5, Proportion6};
+        double min1 = Pro123456[0];
+        double min2 = Pro123456[1];
+
+        for (int i = 2; i < Pro123456.length; i++) {
+            if (Pro123456[i] < min2) {
+                min2 = Pro123456[i];
+            }
+
+            if (min2 < min1) {
+                double temp = min1;
+                min1 = min2;
+                min2 = temp;
+            }
+        }
+
+
+        if (sum1 < 330 || sum2 < 400 || sum3 < 100 || sum4 < 400 || sum5 < 500 || sum6 < 25) {
+
+            System.out.println("不足しています。");
+            System.out.println("おすすめのレシピです");
+
+            if (min1 == Proportion1 && min2 == Proportion2 || min1 == Proportion2 && min2 == Proportion1) {
+                System.out.println("しらすと豆腐 https://youtu.be/5r2mAtBCHck");
+            }
+            if (min1 == Proportion1 && min2 == Proportion3 || min1 == Proportion3 && min2 == Proportion1) {
+                System.out.println("ミートソース https://youtu.be/StOKTV9WR_4");
+            }
+            if (min1 == Proportion1 && min2 == Proportion4 || min1 == Proportion4 && min2 == Proportion1) {
+                System.out.println("生姜焼き https://youtu.be/WXblKAxLmnE");
+            }
+            if (min1 == Proportion1 && min2 == Proportion5 || min1 == Proportion5 && min2 == Proportion1) {
+                System.out.println("牛丼 https://youtu.be/oMQkwk3x-Kk");
+            }
+            if (min1 == Proportion1 && min2 == Proportion6 || min1 == Proportion6 && min2 == Proportion1) {
+                System.out.println("揚げ出し豆腐 https://youtu.be/tTw-_4t_l8Q");
+            }
+            if (min1 == Proportion2 && min2 == Proportion3 || min1 == Proportion3 && min2 == Proportion2) {
+                System.out.println("カボチャグラタン https://youtu.be/im8Y8GClR5s");
+            }
+            if (min1 == Proportion2 && min2 == Proportion4 || min1 == Proportion4 && min2 == Proportion2) {
+                System.out.println("牛乳寒天 https://youtu.be/PywjV8zhRws");
+            }
+            if (min1 == Proportion2 && min2 == Proportion5 || min1 == Proportion5 && min2 == Proportion2) {
+                System.out.println("フレンチトースト https://youtu.be/ZneBg-1snac");
+            }
+            if (min1 == Proportion2 && min2 == Proportion6 || min1 == Proportion6 && min2 == Proportion2) {
+                System.out.println("チーズドック https://youtu.be/24rTOUGVGJE");
+            }
+            if (min1 == Proportion3 && min2 == Proportion4 || min1 == Proportion4 && min2 == Proportion3) {
+                System.out.println("野菜ジュース https://youtu.be/Mb1yyroKdww");
+            }
+            if (min1 == Proportion3 && min2 == Proportion5 || min1 == Proportion5 && min2 == Proportion3) {
+                System.out.println("トマトクリームパスタ https://youtu.be/aVONBygU2UY");
+            }
+            if (min1 == Proportion3 && min2 == Proportion6 || min1 == Proportion6 && min2 == Proportion3) {
+                System.out.println("カボチャの天ぷら https://youtu.be/im8Y8GClR5s");
+            }
+            if (min1 == Proportion4 && min2 == Proportion5 || min1 == Proportion5 && min2 == Proportion4) {
+                System.out.println("お好み焼き　https://youtu.be/4L-M2i01-5g");
+            }
+            if (min1 == Proportion4 && min2 == Proportion6 || min1 == Proportion6 && min2 == Proportion4) {
+                System.out.println("茄子の揚げ浸し　https://youtu.be/eVpliZx1F-o");
+            }
+            if (min1 == Proportion5 && min2 == Proportion6 || min1 == Proportion6 && min2 == Proportion5) {
+                System.out.println("大学芋　https://youtu.be/Sz41VPzwBEY");
+            }
+        } else {
+            System.out.println("栄養素が不足していません、とてもいい栄養バランスです。");
+        }
+
+    }
+}
+
